@@ -20,9 +20,9 @@
   
   *Some HTML and CSS knowledge is required in order to change the appearence of the JavaScript webring's appearence. Alternatively, if you are not comfortable with HTML or CSS, you can use the the HTML webring*
   
-### How does it work?
+## How does it work?
  
- #### JavaScript webring
+ ### JavaScript webring
  
  Membersites of the webring will put **this code:**
  ```html
@@ -30,29 +30,33 @@
  ```
  into a webpage's HTML on the website they control.
  
- When a visitor loads a page on a membersite with this script, it will automatically download and run the script hosted from the RingMaster's (you) web server (website).
+ When a visitor loads a page on a membersite with this script, it will automatically download and run the <a href="#JSRedirect">JavaScript Redirect</a> script hosted from the RingMaster's (you) web server / website.
  
   The script will look at a list of member websites and find the index of the site it is currently running on. The script will then find the previous site in the list, the next site in the list, and a random site in the list. Once the calculations are done, it will insert a snippet of HTML code into the webpage at the location of ringTarget0000 (You will rename this later so it is unique to your webring). The script will also insert a snippet of CSS code to style the HTML and make it look nice.
-
-#### HTML webring
+  
+### HTML webring
 
   Membersites of the webring will put **this code:** 
   ```html
-    <div class="LoopRingWrapper">
-
-    <a href="https://graycot.com/webring/loop-redirect.html?action=prev"> < </a>
-
-    <a href="https://graycot.com/webring/loop-redirect.html?action=list"> ... </a>
-
-    <a href="https://graycot.com/webring/loop-redirect.html?action=home"> Loop Ring </a>
-
-    <a href="https://graycot.com/webring/loop-redirect.html?action=rand"> ? </a>
-
-    <a href="https://graycot.com/webring/loop-redirect.html?action=next"> > </a>
-
+    <div>
+      <a href="https://graycot.com/webring/loop-redirect.html?action=prev"> < </a>
+      <a href="https://graycot.com/webring/loop-redirect.html?action=list"> ... </a>
+      <a href="https://graycot.com/webring/loop-redirect.html?action=home"> Loop Ring </a>
+      <a href="https://graycot.com/webring/loop-redirect.html?action=rand"> ? </a>
+      <a href="https://graycot.com/webring/loop-redirect.html?action=next"> > </a>
     </div> 
   ```
   into a webpage's HTML on the website they control.
+  
+  When a visitor on a member site clicks one of these links, they will be directed to a webpage that the RingMaster (you) control. The page you control will run the <a href="#HTMLRedirect">HTML Redirect</a> script.
+  
+  The script will look at a list of member websites and find the index of the member site that the visitor was on. The script will then find the previous site in the list, the next site in the list, and a random site in the list. Once the calculations are done, it will read the the link after `?action=    ` to determine how and where to redirect the visitor.
+  
+### 
+
+---
+---
+---
 
 ## Javascript Widget
 
@@ -60,7 +64,8 @@
 <div id="ringTarget0000"></div><script src="YOURURL/webring.js" type="module"></script>
 ```
 
-## Javascript Redirect
+<h2 id="JSRedirect">JavaScript Redirect</h2>
+
 
 ```js
 /* O-Ring v2.0 Copyleft © ALL WRONGS RESERVED © Gray (GGraycot@gmail.com)(https://graystea.neocities.org/)(https://graycot.com/)(discord.gg/invite/JM34yvMaFP).
@@ -200,7 +205,21 @@ UNIQUE TO YOUR WEBRING Example: AquaRing3827*/
 /* */
 ```
 
-## HTML Redirect
+---
+
+## HTML Widget
+
+```html
+  <div>
+    <a href="https://graycot.com/webring/loop-redirect.html?action=prev"> < </a>
+    <a href="https://graycot.com/webring/loop-redirect.html?action=list"> ... </a>
+    <a href="https://graycot.com/webring/loop-redirect.html?action=home"> Loop Ring </a>
+    <a href="https://graycot.com/webring/loop-redirect.html?action=rand"> ? </a>
+    <a href="https://graycot.com/webring/loop-redirect.html?action=next"> > </a>
+  </div> 
+```
+  
+<h2 id="HTMLRedirect">HTML Redirect</h2>
 
 ```js
 /* O-Ring v2.0 Copyleft © ALL WRONGS RESERVED © Gray (GGraycot@gmail.com)(https://graystea.neocities.org/)(https://graycot.com/)(discord.gg/invite/JM34yvMaFP).
@@ -277,11 +296,16 @@ function webring(data) {
       window.location.href = randomSiteURL; //In-case of value == null
   }
 
-
 };
-
 
 /* */
 ```
+
+---
+
+## Instructions / How to implement
+
+  First, choose whether you will include only the JavaScript webring, the HTML webring, or Both.
+
 
 
